@@ -3,10 +3,10 @@ all: run
 clean:
 	rm -f out/Main.jar out/Multiple.jar out/VectorMutiple.jar
 
-out/Main.jar: out/parcs.jar src/Main.java src/Pair.java
-	@javac -cp out/parcs.jar src/Main.java src/Pair.java
-	@jar cf out/Main.jar -C src Main.class -С src Pair.class
-	@rm -f src/Main.class src/Pair.class
+out/Main.jar: out/parcs.jar src/Main.java src/Pair.java src/VectorMutiple.java
+	@javac -cp out/parcs.jar src/Main.java src/Pair.java src/VectorMutiple.java
+	@jar cf out/Main.jar -C src Main.class -С src Pair.class -C src VectorMutiple.class
+	@rm -f src/Main.class src/Pair.class src/VectorMutiple.class
 
 out/VectorMutiple.jar: out/parcs.jar src/VectorMutiple.java src/Pair.java
 	@javac -cp out/parcs.jar src/VectorMutiple.java src/Pair.java
