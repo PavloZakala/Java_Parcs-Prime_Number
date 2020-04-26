@@ -42,6 +42,7 @@ public class VectorMutiple implements AM {
 
     public void run(AMInfo info){
         Pair pair = (Pair) info.parent.readObject();
+        System.out.println(pair);
         long res = 0;
         int i = 0;
 
