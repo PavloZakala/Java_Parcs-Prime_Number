@@ -46,11 +46,7 @@ public class VectorMutiple implements AM {
             i++;
         }
         pair.setRes(res);
-        if (pair.getNext() != null) {
-            c.readLong();
-        }
         info.parent.write(res);
-
     }
 
 }
