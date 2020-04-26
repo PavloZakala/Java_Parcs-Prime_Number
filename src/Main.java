@@ -114,11 +114,11 @@ public class Main {
 
             int r_i = 0;
             for (List<Pair> row: res) {
-                System.out.println(row.size());
                 for (Pair pair : row) {
                     List<List<Integer>> submatrix = pair.getRes();
                     int i = 0;
                     for (List<Integer> r: submatrix) {
+                        System.out.println(r.size());
                         final_matrix.get(r_i * BLOCK_SIZE + i).addAll(r);
                         i++;
                     }
