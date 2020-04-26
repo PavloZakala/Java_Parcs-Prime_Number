@@ -33,11 +33,13 @@ public class VectorMutiple implements AM {
         channel c = p.createChannel();
 
         if (pair.getNext() != null) {
-            System.out.println("null");
+            System.out.println("Deeper");
 
             p.execute("VectorMutiple");
             c.write(pair.getNext());
         }
+
+        System.out.println("Find sum");
         List<Integer> v_2 = pair.getVector1();
 
         for (Integer v_1: pair.getVector2())
@@ -45,7 +47,9 @@ public class VectorMutiple implements AM {
             res += v_1 * v_2.get(i);
             i++;
         }
+        System.out.println("Write" + res);
         pair.setRes(res);
+        System.out.println("Return" + res);
         info.parent.write(res);
     }
 
