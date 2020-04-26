@@ -5,7 +5,7 @@ clean:
 
 out/Main.jar: out/parcs.jar src/Main.java src/Pair.java src/VectorMutiple.java
 		@javac -cp out/parcs.jar src/Main.java src/Pair.java
-		@jar cf out/Main.jar -C src *.class
+		@jar cf out/Main.jar -C src .
 		@rm -rf src/*.class
 
 out/VectorMutiple.jar: out/parcs.jar src/VectorMutiple.java src/Pair.java
