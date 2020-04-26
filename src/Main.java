@@ -125,7 +125,7 @@ public class Main {
                 r_i++;
             }
 
-            String name = String.format("M_%d_%d", w, h);
+            String name = String.format("M_%d_%d_res", w, h);
             PrintWriter out = new PrintWriter(new FileWriter(name));
 
             out.println(String.format("%d %d", w, h));
@@ -139,7 +139,6 @@ public class Main {
             out.close();
         } catch (IOException e) {e.printStackTrace(); return;}
 
-//        (new Main()).run(pair_of_matrix);
         curtask.end();
     }
 //
