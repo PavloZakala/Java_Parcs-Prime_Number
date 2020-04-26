@@ -53,7 +53,9 @@ public class FindDiv implements AM {
                 res = n;
             range.setRes(n);
         }
-        c.readLong();
+        if (range.getNext() != null) {
+            c.readLong();
+        }
         info.parent.write(res);
         System.out.println("END");
     }
