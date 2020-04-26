@@ -117,8 +117,8 @@ public class Main {
                 for (Pair pair : row) {
                     List<List<Integer>> submatrix = pair.getRes();
                     int i = 0;
+                    System.out.println(submatrix.size());
                     for (List<Integer> r: submatrix) {
-                        System.out.println(r.size());
                         final_matrix.get(r_i * BLOCK_SIZE + i).addAll(r);
                         i++;
                     }
