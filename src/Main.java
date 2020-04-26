@@ -55,7 +55,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        int BLOCK_SIZE = 10;
+        int BLOCK_SIZE = 5;
 
         Scanner sc = new Scanner(new File("input"));
 
