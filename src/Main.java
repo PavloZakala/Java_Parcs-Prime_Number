@@ -126,7 +126,8 @@ public class Main {
                 }
                 r_i++;
             }
-
+            System.out.println(final_matrix.size());
+            System.out.println(final_matrix.get(0).size());
             String name = String.format("M_%d_%d_res", w, h);
             PrintWriter out = new PrintWriter(new FileWriter(name));
 
