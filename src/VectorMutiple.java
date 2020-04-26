@@ -61,10 +61,12 @@ public class VectorMutiple implements AM {
         List<List<Integer>> m_1 = pair.getVector1();
         List<List<Integer>> m_2 = pair.getVector2();
 
-        List<List<Integer>> res_matrix = new ArrayList<>();
+        List<List<Integer>> res_matrix = pair.getRes();
 
+        int k = 0;
         for (List<Integer> v_1 : m_1) {
-            List<Integer> res_row = new ArrayList<>();
+            List<Integer> res_row = res_matrix.get(k);
+            k++;
             System.out.println("Add row");
             for (List<Integer> v_2 : m_2) {
                 res = 0;
@@ -82,7 +84,7 @@ public class VectorMutiple implements AM {
         if (pair.getNext() != null) {
             c.readLong();
         }
-        System.out.println(res_matrix.size() +" "+ res_matrix.get(0).size());
+        System.out.println(res_matrix.size() +""+ res_matrix.get(0).size());
         pair.setRes(res_matrix);
         info.parent.write(res);
         System.out.println("END");
