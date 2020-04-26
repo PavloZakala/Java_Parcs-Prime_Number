@@ -15,7 +15,7 @@ public class Pair implements Serializable {
     public Pair(List<List<Integer>> vector1, List<List<Integer>> vector2) {
         this.vector1 = vector1;
         this.vector2 = vector2;
-        this.res = new ArrayList<>();
+        this.res = null;
         this.next = null;
     }
 
