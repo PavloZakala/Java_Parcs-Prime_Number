@@ -46,7 +46,7 @@ public class FindDiv implements AM {
             p.execute("FindDiv");
             c.write(range.getNext());
         }
-
+        System.out.println("FOR");
         for (long n = a; n < b; n++)
         {
             if (N % n == 0)
