@@ -34,7 +34,7 @@ public class VectorMutiple implements AM {
         channel c = null;
 
         if (pair.getNext() != null) {
-            System.out.println("Deeper");
+            // System.out.println("Deeper");
 
             p = info.createPoint();
             c = p.createChannel();
@@ -52,13 +52,13 @@ public class VectorMutiple implements AM {
             i++;
         }
         if (pair.getNext() != null) {
-            System.out.println("readLoad() " + c.readLong());
+            c.readLong();
         }
-        System.out.println("Write " + res);
+        // System.out.println("Write " + res);
         pair.setRes(res);
-        System.out.println("Return " + res);
+        // System.out.println("Return " + res);
         info.parent.write(res);
-        System.out.println("End");
+        // System.out.println("End");
     }
 
 }
