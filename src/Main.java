@@ -79,8 +79,8 @@ public class Main {
             List<Pair> new_row = new ArrayList<>();
             for (int j = 0; j < size_m_2; j += BLOCK_SIZE)
             {
-                Pair inp = new Pair(pair_of_matrix.get(0).subList(i, Math.min(i+BLOCK_SIZE, size_m_1)),
-                        pair_of_matrix.get(1).subList(j, Math.min(j+BLOCK_SIZE, size_m_2)));
+                Pair inp = new Pair(new ArrayList<>(pair_of_matrix.get(0).subList(i, Math.min(i+BLOCK_SIZE, size_m_1))),
+                            new ArrayList<>(pair_of_matrix.get(1).subList(j, Math.min(j+BLOCK_SIZE, size_m_2))));
                 if (start == null)
                 {
                     start = inp;

@@ -46,42 +46,42 @@ public class VectorMutiple implements AM {
         long res = 0;
         int i = 0;
 
-//        point p = null;
-//        channel c = null;
-//
-//        if (pair.getNext() != null) {
-//
-//            p = info.createPoint();
-//            c = p.createChannel();
-//
-//            p.execute("VectorMutiple");
-//            c.write(pair.getNext());
-//        }
-//
-//        List<List<Integer>> m_1 = pair.getVector1();
-//        List<List<Integer>> m_2 = pair.getVector2();
-//
-//        List<List<Integer>> res_matrix = pair.getRes();
-//
-//        for (List<Integer> v_1 : m_1) {
-//            List<Integer> res_row = new ArrayList<>();
-//            for (List<Integer> v_2 : m_2) {
-//                res = 0;
-//                i = 0;
-//                for (int p_1 : v_1) {
-//                    res += p_1 * v_2.get(i);
-//                    i++;
-//                }
-//                res_row.add((int) res);
-//            }
-//            res_matrix.add(res_row);
-//        }
-//
-//        if (pair.getNext() != null) {
-//            c.readLong();
-//        }
-//
-//        pair.setRes(res_matrix);
+        point p = null;
+        channel c = null;
+
+        if (pair.getNext() != null) {
+
+            p = info.createPoint();
+            c = p.createChannel();
+
+            p.execute("VectorMutiple");
+            c.write(pair.getNext());
+        }
+
+        List<List<Integer>> m_1 = pair.getVector1();
+        List<List<Integer>> m_2 = pair.getVector2();
+
+        List<List<Integer>> res_matrix = pair.getRes();
+
+        for (List<Integer> v_1 : m_1) {
+            List<Integer> res_row = new ArrayList<>();
+            for (List<Integer> v_2 : m_2) {
+                res = 0;
+                i = 0;
+                for (int p_1 : v_1) {
+                    res += p_1 * v_2.get(i);
+                    i++;
+                }
+                res_row.add((int) res);
+            }
+            res_matrix.add(res_row);
+        }
+
+        if (pair.getNext() != null) {
+            c.readLong();
+        }
+
+        pair.setRes(res_matrix);
         info.parent.write(res);
     }
 
