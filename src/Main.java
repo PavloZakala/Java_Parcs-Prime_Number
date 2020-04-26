@@ -55,7 +55,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        int BLOCK_SIZE = 3;
+        int BLOCK_SIZE = 10;
 
         Scanner sc = new Scanner(new File("input"));
 
@@ -98,6 +98,7 @@ public class Main {
         point p = info.createPoint();
         channel c = p.createChannel();
         p.execute("VectorMutiple");
+        System.out.println(start);
         c.write(start);
 
         System.out.println("Waiting for result...");
@@ -139,7 +140,7 @@ public class Main {
             out.close();
         } catch (IOException e) {e.printStackTrace(); return;}
 
-        curtask.end();
+//        curtask.end();
     }
 //
 //    public void run(List<List<List<Integer>>> pair_of_matrix) {
