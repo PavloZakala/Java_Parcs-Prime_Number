@@ -55,16 +55,16 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        task curtask = new task();
-        curtask.addJarFile("VectorMutiple.jar");
-        Scanner sc = new Scanner(new File("input"));
+        int BLOCK_SIZE = 3;
 
-        int BLOCK_SIZE = 5;
+        Scanner sc = new Scanner(new File("input"));
 
         List<List<List<Integer>>> pair_of_matrix = new ArrayList<>();
         pair_of_matrix.add(fromFileFirst(sc.nextLine()));
         pair_of_matrix.add(fromFileSecond(sc.nextLine()));
 
+        task curtask = new task();
+        curtask.addJarFile("VectorMutiple.jar");
         AMInfo info = new AMInfo(curtask, null);
 
         List<List<Pair>> res = new ArrayList<>();
