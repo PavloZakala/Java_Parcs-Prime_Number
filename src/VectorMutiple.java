@@ -47,10 +47,14 @@ public class VectorMutiple implements AM {
             res += v_1 * v_2.get(i);
             i++;
         }
+//        if (pair.getNext() != null) {
+
+//        }
         System.out.println("Write" + res);
         pair.setRes(res);
         System.out.println("Return" + res);
         info.parent.write(res);
+        System.out.println("End" + res);
     }
 
 }
