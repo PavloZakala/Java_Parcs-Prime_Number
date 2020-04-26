@@ -4,7 +4,7 @@ clean:
 		rm -f out/Main.jar out/Multiple.jar out/VectorMutiple.jar
 
 out/Main.jar: out/parcs.jar src/Main.java src/Pair.java src/VectorMutiple.java
-		@javac -cp out/parcs.jar src/Main.java src/Pair.java src/VectorMutiple.java
+		@javac -cp out/parcs.jar src/Main.java src/Pair.java
 		@jar cf out/Main.jar -C src *.class
 		@rm -rf src/*.class
 
