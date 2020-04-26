@@ -50,7 +50,7 @@ public class VectorMutiple implements AM {
         channel c = null;
 
         if (pair.getNext() != null) {
-
+            System.out.println("NULL");
             p = info.createPoint();
             c = p.createChannel();
 

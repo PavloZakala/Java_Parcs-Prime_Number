@@ -98,8 +98,6 @@ public class Main {
         point p = info.createPoint();
         channel c = p.createChannel();
         p.execute("VectorMutiple");
-        System.out.println("->" + start);
-        System.out.println("->" + start.getNext());
         c.write(start);
 
         System.out.println("Waiting for result...");
