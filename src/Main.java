@@ -114,6 +114,7 @@ public class Main {
 
             int r_i = 0;
             for (List<Pair> row: res) {
+                System.out.println(row.size());
                 for (Pair pair : row) {
                     List<List<Integer>> submatrix = pair.getRes();
                     int i = 0;
