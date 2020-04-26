@@ -44,7 +44,8 @@ public class Main {
         c.write(start);
 
         System.out.println("Waiting for result...");
-        System.out.println("Result: " + (new FindDiv()).run_test(start));
+//        System.out.println("Result: " + (new FindDiv()).run_test(start));
+        System.out.println("Result: " + c.readLong());
 
         while (start != null)
         {
