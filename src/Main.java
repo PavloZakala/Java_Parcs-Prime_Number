@@ -64,8 +64,53 @@ public class Main {
 
         AMInfo info = new AMInfo(curtask, null);
 
-//        (new Main()).run(pair_of_matrix);
-        (new Main()).run(info, pair_of_matrix);
+        List<List<Pair>> res = new ArrayList<>();
+        Pair start = null;
+        Pair last = null;
+
+        for (List<Integer> row: pair_of_matrix.get(0))
+        {
+            List<Pair> new_row = new ArrayList<>();
+            for (List<Integer> col: pair_of_matrix.get(1))
+            {
+                Pair inp = new Pair(row, col);
+                if (start == null)
+                {
+                    start = inp;
+                }
+                if (last != null) {
+                    last.setNext(inp);
+                }
+                last =  inp;
+
+                new_row.add(inp);
+            }
+            res.add(new_row);
+        }
+        point p = info.createPoint();
+        channel c = p.createChannel();
+        p.execute("VectorMutiple");
+        c.write(start);
+
+        System.out.println("Waiting for result...");
+        System.out.println("Result: " + c.readLong());
+        try{
+            int h = res.size();
+            int w = res.get(0).size();
+
+            String name = String.format("M_%d_%d", w, h);
+            PrintWriter out = new PrintWriter(new FileWriter(name));
+
+            out.println(String.format("%d %d", w, h));
+            for (List<Pair> row: res) {
+                for (Pair pair : row) {
+                    out.print(pair.getRes());
+                    out.print(" ");
+                }
+                out.println();
+            }
+            out.close();
+        } catch (IOException e) {e.printStackTrace(); return;}
         curtask.end();
     }
 
@@ -112,53 +157,4 @@ public class Main {
 //        } catch (IOException e) {e.printStackTrace(); return;}
 //    }
 
-    public void run(AMInfo info, List<List<List<Integer>>> pair_of_matrix) {
-
-        List<List<Pair>> res = new ArrayList<>();
-        Pair start = null;
-        Pair last = null;
-
-        for (List<Integer> row: pair_of_matrix.get(0))
-        {
-            List<Pair> new_row = new ArrayList<>();
-            for (List<Integer> col: pair_of_matrix.get(1))
-            {
-                Pair inp = new Pair(row, col);
-                if (start == null)
-                {
-                    start = inp;
-                }
-                if (last != null) {
-                    last.setNext(inp);
-                }
-                last =  inp;
-
-                new_row.add(inp);
-            }
-            res.add(new_row);
-        }
-        point p = info.createPoint();
-        channel c = p.createChannel();
-        p.execute("VectorMutiple");
-        c.write(start);
-        System.out.println("Waiting for result...");
-        System.out.println("Result: " + c.readLong());
-        try{
-            int h = res.size();
-            int w = res.get(0).size();
-
-            String name = String.format("M_%d_%d", w, h);
-            PrintWriter out = new PrintWriter(new FileWriter(name));
-
-            out.println(String.format("%d %d", w, h));
-            for (List<Pair> row: res) {
-                for (Pair pair : row) {
-                    out.print(pair.getRes());
-                    out.print(" ");
-                }
-                out.println();
-            }
-            out.close();
-        } catch (IOException e) {e.printStackTrace(); return;}
-    }
 }
