@@ -69,15 +69,14 @@ public class VectorMutiple implements AM {
             for (List<Integer> v_2 : m_2) {
                 res = 0;
                 i = 0;
-                System.out.println("cell");
                 for (int p_1 : v_1) {
                     res += p_1 * v_2.get(i);
                     i++;
                 }
-                System.out.println("Cell " + res);
                 res_row.add((int) res);
             }
             res_matrix.add(res_row);
+            System.out.println("Row size: " + res_row.size());
         }
 
         if (pair.getNext() != null) {
@@ -86,6 +85,7 @@ public class VectorMutiple implements AM {
 
         pair.setRes(res_matrix);
         info.parent.write(res);
+        System.out.println("END");
     }
 
 }
