@@ -24,7 +24,7 @@ public class Main {
 
         System.out.println("Input: " + num);
 
-        for (int i = 2; i < num; i+= MAX_RANGE_SIZE)
+        for (int i = 2; i < Math.sqrt(num); i+= MAX_RANGE_SIZE)
         {
             Range current = new Range(num, i, Math.min(i + MAX_RANGE_SIZE, num) + 1);
 
@@ -44,17 +44,9 @@ public class Main {
         c.write(start);
 
         System.out.println("Waiting for result...");
-//        System.out.println("Result: " + (new FindDiv()).run_test(start));
-        System.out.println("Result: " + c.readLong());
+//        System.out.println("Result Max: " + (new FindDiv()).run_test(start));
+        System.out.println("Result Max: " + c.readLong());
 
-        while (start != null)
-        {
-            for (Long n_i: start.getRes())
-            {
-                System.out.print(n_i + " ");
-            }
-            start = start.getNext();
-        }
         curtask.end();
     }
 

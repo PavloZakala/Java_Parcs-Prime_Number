@@ -3,6 +3,7 @@ import parcs.AMInfo;
 import parcs.channel;
 import parcs.point;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FindDiv implements AM {
@@ -11,7 +12,7 @@ public class FindDiv implements AM {
 
         long a = range.getA();
         long b = range.getB();
-        long res = -42;
+        long res = 1;
 
         long N = range.getN();
         if (range.getNext() != null)
@@ -21,8 +22,8 @@ public class FindDiv implements AM {
         for (long n = a; n < b; n++)
         {
             if (N % n == 0) {
-                res = n;
-                range.setRes(n);
+                if (is_prime(n))
+                    res = n;
             }
         }
         return res;
@@ -33,12 +34,13 @@ public class FindDiv implements AM {
 
         long a = range.getA();
         long b = range.getB();
-        long res = -42;
+        long res = 1;
 
         point p = null;
         channel c = null;
 
         long N = range.getN();
+
         if (range.getNext() != null)
         {
             System.out.println("NOT NULL");
@@ -53,15 +55,26 @@ public class FindDiv implements AM {
         for (long n = a; n < b; n++)
         {
             if (N % n == 0) {
-                res = n;
-                range.setRes(n);
+                if (is_prime(n))
+                    res = n;
             }
         }
         System.out.println("***");
         if (range.getNext() != null) {
-            res = c.readLong();
+            res = Math.max(c.readLong(), res);
         }
         info.parent.write(res);
         System.out.println("END");
+    }
+
+    public boolean is_prime(long num)
+    {
+        for (int i = 2; i < Math.sqrt(num) + 1; i++)
+        {
+            if (num % i == 0)
+                return false;
+        }
+
+        return true;
     }
 }
