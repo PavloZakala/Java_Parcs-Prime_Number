@@ -3,6 +3,8 @@ import parcs.AMInfo;
 import parcs.channel;
 import parcs.point;
 
+import java.util.List;
+
 public class FindDiv implements AM {
 
     public long run_test(Range range){
@@ -47,11 +49,13 @@ public class FindDiv implements AM {
             c.write(range.getNext());
         }
         System.out.println("FOR");
+
         for (long n = a; n < b; n++)
         {
-            if (N % n == 0)
+            if (N % n == 0) {
                 res = n;
-            range.setRes(n);
+                range.setRes(n);
+            }
         }
         System.out.println("***");
         if (range.getNext() != null) {
