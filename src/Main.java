@@ -42,10 +42,11 @@ public class Main {
         channel c = p.createChannel();
         p.execute("FindDiv");
         c.write(start);
+        long r = c.readLong();
 
         System.out.println("Waiting for result...");
 //        System.out.println("Result Max: " + (new FindDiv()).run_test(start));
-        System.out.println("Result Max: " + c.readLong());
+        System.out.println("Result Max: " + Math.max(r, num / r));
 
         curtask.end();
     }
