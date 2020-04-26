@@ -9,7 +9,7 @@ public class Pair implements Serializable {
     private List<Integer> vector1;
     private List<Integer> vector2;
 
-    private int res;
+    private long res;
     private Pair next;
 
     public Pair(List<Integer> vector1, List<Integer> vector2) {
@@ -31,11 +31,11 @@ public class Pair implements Serializable {
         return next;
     }
 
-    public int getRes() {
+    public long getRes() {
         return res;
     }
 
-    public void setRes(int res) {
+    public void setRes(long res) {
         this.res = res;
     }
 

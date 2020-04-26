@@ -27,13 +27,17 @@ public class VectorMutiple implements AM {
 
     public void run(AMInfo info){
         Pair pair = (Pair) info.parent.readObject();
-        int res = 0;
+        long res = 0;
         int i = 0;
-        point p = info.createPoint();
-        channel c = p.createChannel();
+
+        point p = null;
+        channel c = null;
 
         if (pair.getNext() != null) {
             System.out.println("Deeper");
+
+            p = info.createPoint();
+            c = p.createChannel();
 
             p.execute("VectorMutiple");
             c.write(pair.getNext());
@@ -47,9 +51,9 @@ public class VectorMutiple implements AM {
             res += v_1 * v_2.get(i);
             i++;
         }
-//        if (pair.getNext() != null) {
-
-//        }
+        if (pair.getNext() != null) {
+            System.out.println("readLoad() " + c.readLong());
+        }
         System.out.println("Write " + res);
         pair.setRes(res);
         System.out.println("Return " + res);
