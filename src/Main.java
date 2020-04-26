@@ -58,25 +58,26 @@ public class Main {
         curtask.addJarFile("VectorMutiple.jar");
         Scanner sc = new Scanner(new File("input"));
 
-        List<List<Integer>> matrix1 = fromFileFirst(sc.nextLine());
-        List<List<Integer>> matrix2 = fromFileSecond(sc.nextLine());
+        List<List<List<Integer>>> pair_of_matrix = new ArrayList<>();
+        pair_of_matrix.add(fromFileFirst(sc.nextLine()));
+        pair_of_matrix.add(fromFileSecond(sc.nextLine()));
 
-        Pair pair_of_matrix = new Pair(matrix1, matrix2);
         AMInfo info = new AMInfo(curtask, null);
 
+//        (new Main()).run(pair_of_matrix);
         (new Main()).run(info, pair_of_matrix);
         curtask.end();
     }
 
-    public void run(Pair pair_of_matrix) {
+    public void run(List<List<List<Integer>>> pair_of_matrix) {
         List<List<Pair>> res = new ArrayList<>();
         Pair start = null;
         Pair last = null;
 
-        for (List<Integer> row: (List<List<Integer>>)pair_of_matrix.getMatrix1())
+        for (List<Integer> row: pair_of_matrix.get(0))
         {
             List<Pair> new_row = new ArrayList<>();
-            for (List<Integer> col: (List<List<Integer>>)pair_of_matrix.getMatrix2()) {
+            for (List<Integer> col: pair_of_matrix.get(1)) {
                 Pair inp = new Pair(row, col);
                 if (start == null)
                 {
@@ -111,16 +112,16 @@ public class Main {
         } catch (IOException e) {e.printStackTrace(); return;}
     }
 
-    public void run(AMInfo info, Pair pair_of_matrix) {
+    public void run(AMInfo info, List<List<List<Integer>>> pair_of_matrix) {
 
         List<List<Pair>> res = new ArrayList<>();
         Pair start = null;
         Pair last = null;
 
-        for (List<Integer> row: (List<List<Integer>>)pair_of_matrix.getMatrix1())
+        for (List<Integer> row: pair_of_matrix.get(0))
         {
             List<Pair> new_row = new ArrayList<>();
-            for (List<Integer> col: (List<List<Integer>>)pair_of_matrix.getMatrix2())
+            for (List<Integer> col: pair_of_matrix.get(1))
             {
                 Pair inp = new Pair(row, col);
                 if (start == null)

@@ -14,9 +14,9 @@ public class VectorMutiple implements AM {
         if (pair.getNext() != null) {
             run_test(pair.getNext());
         }
-        List<Integer> v_2 = (List<Integer>)pair.getMatrix1();
+        List<Integer> v_2 = pair.getVector1();
 
-        for (Integer v_1: (List<Integer>)pair.getMatrix2())
+        for (Integer v_1: pair.getVector2())
         {
             res += v_1 * v_2.get(i);
             i++;
@@ -38,9 +38,9 @@ public class VectorMutiple implements AM {
             p.execute("VectorMutiple");
             c.write(pair.getNext());
         }
-        List<Integer> v_2 = (List<Integer>)pair.getMatrix1();
+        List<Integer> v_2 = pair.getVector1();
 
-        for (Integer v_1: (List<Integer>)pair.getMatrix1())
+        for (Integer v_1: pair.getVector2())
         {
             res += v_1 * v_2.get(i);
             i++;

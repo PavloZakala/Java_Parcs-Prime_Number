@@ -6,25 +6,25 @@ import java.io.Serializable;
 
 public class Pair implements Serializable {
 
-    private List matrix1;
-    private List matrix2;
+    private List<Integer> vector1;
+    private List<Integer> vector2;
 
     private int res;
     private Pair next;
 
-    public Pair(List matrix1, List matrix2) {
-        this.matrix1 = matrix1;
-        this.matrix2 = matrix2;
+    public Pair(List<Integer> vector1, List<Integer> vector2) {
+        this.vector1 = vector1;
+        this.vector2 = vector2;
         this.res = -42;
         this.next = null;
     }
 
-    public List getMatrix1() {
-        return matrix1;
+    public List<Integer> getVector1() {
+        return vector1;
     }
 
-    public List getMatrix2() {
-        return matrix2;
+    public List<Integer> getVector2() {
+        return vector2;
     }
 
     public Pair getNext() {
