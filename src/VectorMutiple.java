@@ -1,8 +1,9 @@
+import parcs.AM;
 import parcs.AMInfo;
 
 import java.util.List;
 
-public class VectorMutiple {
+public class VectorMutiple implements AM {
     public int run_test(List<List<Integer>> vector_list){
         int res = 0;
         int i = 0;
