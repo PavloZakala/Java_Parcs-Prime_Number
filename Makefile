@@ -10,7 +10,7 @@ out/Main.jar: out/parcs.jar src/Main.java src/Pair.java src/VectorMutiple.java
 
 out/VectorMutiple.jar: out/parcs.jar src/VectorMutiple.java src/Pair.java
 		@javac -cp out/parcs.jar src/VectorMutiple.java src/Pair.java
-		@jar cf out/VectorMutiple.jar -C src VectorMutiple.class -С src Pair.class
+		@jar cf out/VectorMutiple.jar -C src .
 		@rm -rf src/*.class
 
 build: out/Main.jar out/VectorMutiple.jar
