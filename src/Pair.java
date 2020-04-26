@@ -6,24 +6,24 @@ import java.io.Serializable;
 
 public class Pair implements Serializable {
 
-    private List<Integer> vector1;
-    private List<Integer> vector2;
+    private List<List<Integer>> vector1;
+    private List<List<Integer>> vector2;
 
-    private long res;
+    private List<List<Integer>> res;
     private Pair next;
 
-    public Pair(List<Integer> vector1, List<Integer> vector2) {
+    public Pair(List<List<Integer>> vector1, List<List<Integer>> vector2) {
         this.vector1 = vector1;
         this.vector2 = vector2;
-        this.res = -42;
+        this.res = new ArrayList<>();
         this.next = null;
     }
 
-    public List<Integer> getVector1() {
+    public List<List<Integer>> getVector1() {
         return vector1;
     }
 
-    public List<Integer> getVector2() {
+    public List<List<Integer>> getVector2() {
         return vector2;
     }
 
@@ -31,11 +31,11 @@ public class Pair implements Serializable {
         return next;
     }
 
-    public long getRes() {
+    public List<List<Integer>> getRes() {
         return res;
     }
 
-    public void setRes(long res) {
+    public void setRes(List<List<Integer>> res) {
         this.res = res;
     }
 

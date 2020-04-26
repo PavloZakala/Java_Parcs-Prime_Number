@@ -3,25 +3,40 @@ import parcs.AMInfo;
 import parcs.channel;
 import parcs.point;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VectorMutiple implements AM {
 
-    public int run_test(Pair pair){
-        int res = 0;
+    public long run_test(Pair pair){
+        long res = 0;
         int i = 0;
 
         if (pair.getNext() != null) {
             run_test(pair.getNext());
         }
-        List<Integer> v_2 = pair.getVector1();
 
-        for (Integer v_1: pair.getVector2())
-        {
-            res += v_1 * v_2.get(i);
-            i++;
+        List<List<Integer>> m_1 = pair.getVector1();
+        List<List<Integer>> m_2 = pair.getVector2();
+
+        List<List<Integer>> res_matrix = pair.getRes();
+
+        for (List<Integer> v_1 : m_1) {
+            List<Integer> res_row = new ArrayList<>();
+            for (List<Integer> v_2 : m_2) {
+                res = 0;
+                i = 0;
+                for (int p_1: v_1)
+                {
+                    res += p_1 * v_2.get(i);
+                    i++;
+                }
+                res_row.add((int)res);
+            }
+            res_matrix.add(res_row);
         }
-        pair.setRes(res);
+
+        pair.setRes(res_matrix);
         return res;
     }
 
@@ -34,7 +49,6 @@ public class VectorMutiple implements AM {
         channel c = null;
 
         if (pair.getNext() != null) {
-            // System.out.println("Deeper");
 
             p = info.createPoint();
             c = p.createChannel();
@@ -43,22 +57,31 @@ public class VectorMutiple implements AM {
             c.write(pair.getNext());
         }
 
-        System.out.println("Find sum");
-        List<Integer> v_2 = pair.getVector1();
+        List<List<Integer>> m_1 = pair.getVector1();
+        List<List<Integer>> m_2 = pair.getVector2();
 
-        for (Integer v_1: pair.getVector2())
-        {
-            res += v_1 * v_2.get(i);
-            i++;
+        List<List<Integer>> res_matrix = pair.getRes();
+
+        for (List<Integer> v_1 : m_1) {
+            List<Integer> res_row = new ArrayList<>();
+            for (List<Integer> v_2 : m_2) {
+                res = 0;
+                i = 0;
+                for (int p_1 : v_1) {
+                    res += p_1 * v_2.get(i);
+                    i++;
+                }
+                res_row.add((int) res);
+            }
+            res_matrix.add(res_row);
         }
+
         if (pair.getNext() != null) {
             c.readLong();
         }
-        // System.out.println("Write " + res);
-        pair.setRes(res);
-        // System.out.println("Return " + res);
+
+        pair.setRes(res_matrix);
         info.parent.write(res);
-        // System.out.println("End");
     }
 
 }

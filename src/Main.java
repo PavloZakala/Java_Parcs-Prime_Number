@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.BlockingDeque;
 
 
 public class Main {
@@ -58,6 +59,8 @@ public class Main {
         curtask.addJarFile("VectorMutiple.jar");
         Scanner sc = new Scanner(new File("input"));
 
+        int BLOCK_SIZE = 5;
+
         List<List<List<Integer>>> pair_of_matrix = new ArrayList<>();
         pair_of_matrix.add(fromFileFirst(sc.nextLine()));
         pair_of_matrix.add(fromFileSecond(sc.nextLine()));
@@ -68,12 +71,16 @@ public class Main {
         Pair start = null;
         Pair last = null;
 
-        for (List<Integer> row: pair_of_matrix.get(0))
+        int size_m_1 = pair_of_matrix.get(0).size();
+        int size_m_2 = pair_of_matrix.get(1).size();
+
+        for (int i = 0; i < size_m_1; i += BLOCK_SIZE)
         {
             List<Pair> new_row = new ArrayList<>();
-            for (List<Integer> col: pair_of_matrix.get(1))
+            for (int j = 0; j < size_m_2; j += BLOCK_SIZE)
             {
-                Pair inp = new Pair(row, col);
+                Pair inp = new Pair(pair_of_matrix.get(0).subList(i, Math.min(i+BLOCK_SIZE, size_m_1)),
+                        pair_of_matrix.get(1).subList(j, Math.min(j+BLOCK_SIZE, size_m_2)));
                 if (start == null)
                 {
                     start = inp;
@@ -87,6 +94,7 @@ public class Main {
             }
             res.add(new_row);
         }
+
         point p = info.createPoint();
         channel c = p.createChannel();
         p.execute("VectorMutiple");
@@ -95,35 +103,62 @@ public class Main {
         System.out.println("Waiting for result...");
         System.out.println("Result: " + c.readLong());
         try{
-            int h = res.size();
-            int w = res.get(0).size();
+
+            int h = pair_of_matrix.get(0).size();
+            int w = pair_of_matrix.get(1).size();
+
+            List<List<Integer>> final_matrix = new ArrayList<>();
+            for (int i = 0; i < h; i++)
+                final_matrix.add(new ArrayList<>());
+
+
+            int r_i = 0;
+            for (List<Pair> row: res) {
+                for (Pair pair : row) {
+                    List<List<Integer>> submatrix = pair.getRes();
+                    int i = 0;
+                    for (List<Integer> r: submatrix) {
+                        final_matrix.get(r_i * BLOCK_SIZE + i).addAll(r);
+                        i++;
+                    }
+                }
+                r_i++;
+            }
 
             String name = String.format("M_%d_%d", w, h);
             PrintWriter out = new PrintWriter(new FileWriter(name));
 
             out.println(String.format("%d %d", w, h));
-            for (List<Pair> row: res) {
-                for (Pair pair : row) {
-                    out.print(pair.getRes());
+            for (List<Integer> row: final_matrix) {
+                for (Integer num : row) {
+                    out.print(num);
                     out.print(" ");
                 }
                 out.println();
             }
             out.close();
         } catch (IOException e) {e.printStackTrace(); return;}
+
+//        (new Main()).run(pair_of_matrix);
         curtask.end();
     }
-
+//
 //    public void run(List<List<List<Integer>>> pair_of_matrix) {
 //        List<List<Pair>> res = new ArrayList<>();
 //        Pair start = null;
 //        Pair last = null;
+//        int BLOCK_SIZE = 5;
 //
-//        for (List<Integer> row: pair_of_matrix.get(0))
+//        int size_m_1 = pair_of_matrix.get(0).size();
+//        int size_m_2 = pair_of_matrix.get(1).size();
+//
+//        for (int i = 0; i < size_m_1; i += BLOCK_SIZE)
 //        {
 //            List<Pair> new_row = new ArrayList<>();
-//            for (List<Integer> col: pair_of_matrix.get(1)) {
-//                Pair inp = new Pair(row, col);
+//            for (int j = 0; j < size_m_2; j += BLOCK_SIZE)
+//            {
+//                Pair inp = new Pair(pair_of_matrix.get(0).subList(i, Math.min(i+BLOCK_SIZE, size_m_1)),
+//                        pair_of_matrix.get(1).subList(j, Math.min(j+BLOCK_SIZE, size_m_2)));
 //                if (start == null)
 //                {
 //                    start = inp;
@@ -139,16 +174,35 @@ public class Main {
 //        }
 //        (new VectorMutiple()).run_test(start);
 //        try{
-//            int h = res.size();
-//            int w = res.get(0).size();
+//
+//            int h = pair_of_matrix.get(0).size();
+//            int w = pair_of_matrix.get(1).size();
+//
+//            List<List<Integer>> final_matrix = new ArrayList<>();
+//            for (int i = 0; i < h; i++)
+//                final_matrix.add(new ArrayList<>());
+//
+//
+//            int r_i = 0;
+//            for (List<Pair> row: res) {
+//                for (Pair pair : row) {
+//                    List<List<Integer>> submatrix = pair.getRes();
+//                    int i = 0;
+//                    for (List<Integer> r: submatrix) {
+//                        final_matrix.get(r_i * BLOCK_SIZE + i).addAll(r);
+//                        i++;
+//                    }
+//                }
+//                r_i++;
+//            }
 //
 //            String name = String.format("M_%d_%d", w, h);
 //            PrintWriter out = new PrintWriter(new FileWriter(name));
 //
 //            out.println(String.format("%d %d", w, h));
-//            for (List<Pair> row: res) {
-//                for (Pair num : row) {
-//                    out.print(num.getRes());
+//            for (List<Integer> row: final_matrix) {
+//                for (Integer num : row) {
+//                    out.print(num);
 //                    out.print(" ");
 //                }
 //                out.println();
