@@ -9,7 +9,7 @@ import java.util.List;
 public class VectorMutiple implements AM {
 
     public long run_test(Pair pair){
-        long res = 0;
+        int res = 0;
         int i = 0;
 
         if (pair.getNext() != null) {
@@ -31,7 +31,7 @@ public class VectorMutiple implements AM {
                     res += p_1 * v_2.get(i);
                     i++;
                 }
-                res_row.add((int)res);
+                res_row.add(res);
             }
             res_matrix.add(res_row);
         }
@@ -65,13 +65,16 @@ public class VectorMutiple implements AM {
 
         for (List<Integer> v_1 : m_1) {
             List<Integer> res_row = new ArrayList<>();
+            System.out.println("Add row");
             for (List<Integer> v_2 : m_2) {
                 res = 0;
                 i = 0;
+                System.out.println("cell");
                 for (int p_1 : v_1) {
                     res += p_1 * v_2.get(i);
                     i++;
                 }
+                System.out.println("Cell " + res);
                 res_row.add((int) res);
             }
             res_matrix.add(res_row);
