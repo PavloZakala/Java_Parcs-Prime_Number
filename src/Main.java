@@ -18,7 +18,7 @@ public class Main {
         curtask.addJarFile("FindDiv.jar");
         AMInfo info = new AMInfo(curtask, null);
 
-        long num = sc.nextInt();
+        long num = sc.nextLong();
         Range start = null;
         Range last = null;
 
