@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static final long MAX_RANGE_SIZE = 10000000;
+    private static final long MAX_RANGE_SIZE = 1000;
 
     public static void main(String[] args) throws Exception {
 
@@ -46,7 +46,7 @@ public class Main {
 
         System.out.println("Waiting for result...");
 //        System.out.println("Result Max: " + (new FindDiv()).run_test(start));
-        System.out.println("Result Max: " + Math.max(r, num / r));
+        System.out.println("Result Max: " + r);
 
         curtask.end();
     }

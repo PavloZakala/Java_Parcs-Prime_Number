@@ -54,9 +54,8 @@ public class FindDiv implements AM {
 
         for (long n = a; n < b; n++)
         {
-            if (N % n == 0) {
-                if (is_prime(n))
-                    res = n;
+            if (is_prime(n)) {
+                res = n;
             }
         }
         System.out.println("Range (" + range.getA() + ", " +  range.getB() + ")" + res);
