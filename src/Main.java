@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static final long MAX_RANGE_SIZE = 1000;
+    private static final long MAX_RANGE_SIZE = 10000;
 
     public static void main(String[] args) throws Exception {
 
@@ -24,7 +24,7 @@ public class Main {
 
         System.out.println("Input: " + num);
 
-        for (int i = 2; i < Math.sqrt(num); i+= MAX_RANGE_SIZE)
+        for (int i = 2; i < num; i+= MAX_RANGE_SIZE)
         {
             Range current = new Range(num, i, Math.min(i + MAX_RANGE_SIZE, num) + 1);
 

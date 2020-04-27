@@ -14,15 +14,14 @@ public class FindDiv implements AM {
         long b = range.getB();
         long res = 1;
 
-        long N = range.getN();
         if (range.getNext() != null)
         {
             res = run_test(range.getNext());
         }
-        for (long n = a; n < b; n++)
+        for (long n = b-1; n >= a; n--)
         {
-            if (N % n == 0) {
-                if (is_prime(n))
+            if (is_prime(n)) {
+                if (res < n)
                     res = n;
             }
         }
@@ -52,10 +51,11 @@ public class FindDiv implements AM {
         }
         System.out.println("FOR");
 
-        for (long n = a; n < b; n++)
+        for (long n = b-1; n >= a; n--)
         {
             if (is_prime(n)) {
-                res = n;
+                if (res < n)
+                    res = n;
             }
         }
         System.out.println("Range (" + range.getA() + ", " +  range.getB() + ")" + res);
