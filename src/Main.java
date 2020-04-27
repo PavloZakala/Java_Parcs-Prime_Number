@@ -9,14 +9,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static final long MAX_RANGE_SIZE = 100000;
+    private static final long MAX_RANGE_SIZE = 1000000;
 
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(new File("input"));
-        task curtask = new task();
-        curtask.addJarFile("FindDiv.jar");
-        AMInfo info = new AMInfo(curtask, null);
+//        task curtask = new task();
+//        curtask.addJarFile("FindDiv.jar");
+//        AMInfo info = new AMInfo(curtask, null);
 
         long num = sc.nextLong();
         Range start = null;
@@ -38,17 +38,17 @@ public class Main {
             last =  current;
         }
 
-        point p = info.createPoint();
-        channel c = p.createChannel();
-        p.execute("FindDiv");
-        c.write(start);
-        long r = c.readLong();
+//        point p = info.createPoint();
+//        channel c = p.createChannel();
+//        p.execute("FindDiv");
+//        c.write(start);
+//        long r = c.readLong();
 
         System.out.println("Waiting for result...");
-//        System.out.println("Result Max: " + (new FindDiv()).run_test(start));
-        System.out.println("Result Max: " + r);
+        System.out.println("Result Max: " + (new FindDiv()).run_test(start));
+//        System.out.println("Result Max: " + r);
 
-        curtask.end();
+//        curtask.end();
     }
 
 }

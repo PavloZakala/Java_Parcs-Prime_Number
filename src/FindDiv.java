@@ -18,7 +18,8 @@ public class FindDiv implements AM {
         {
             res = run_test(range.getNext());
         }
-        for (long n = b-1; n >= a; n--)
+
+        for (long n = a; n < b; n++)
         {
             if (is_prime(n)) {
                 if (res < n)
@@ -51,7 +52,7 @@ public class FindDiv implements AM {
         }
         System.out.println("FOR");
 
-        for (long n = b-1; n >= a; n--)
+        for (long n = a; n < b; n++)
         {
             if (is_prime(n)) {
                 if (res < n)
