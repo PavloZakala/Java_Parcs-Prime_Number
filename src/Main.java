@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static final int MAX_RANGE_SIZE = 200;
+    private static final int MAX_RANGE_SIZE = 5000;
 
     public static void main(String[] args) throws Exception {
 
