@@ -59,7 +59,7 @@ public class FindDiv implements AM {
                     res = n;
             }
         }
-        System.out.println("***");
+        System.out.println("Range (" + range.getA() + ", " +  range.getB() + ")" + res);
         if (range.getNext() != null) {
             res = Math.max(c.readLong(), res);
         }
