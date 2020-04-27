@@ -1,5 +1,7 @@
 # Java Parcs - Prime Number
 
+[Base](https://github.com/lionell/labs/tree/master/parcs)
+
 У лабораторній роботі було створено дві ноди в регіоні europe-west6 (app, hosts-server) та по 4 ноди в зонах europe-west4, europe-west3 (в google cloud обмеження на кількість нод в одній зоні тому довелось розкидати на різні). 
 
 Тести: 
